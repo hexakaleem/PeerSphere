@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeerSphere - Elevate Your Learning</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="./assets/favIcon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="dark-theme">
+    <div id="particle-background"></div>
+    <header>
+        <nav class="navbar">
+            <div class="logo-text">PeerSphere</div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Subjects</a></li>
+                <li><a href="#">Upload</a></li>
+                <li><a href="#">Dashboard</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn btn-secondary">Sign In</button>
+                <button class="btn btn-primary">Sign Up</button>
+            </div>
+            <div class="theme-toggle">
+                <input type="checkbox" id="theme-switch" checked />
+                <label for="theme-switch">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </label>
+            </div>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Empower Your Learning Journey</h1>
+                <p class="hero-subtitle">Share knowledge, collaborate, and excel with PeerSphere</p>
+                <div class="search-container">
+                    <input type="text" placeholder="Search for notes, past papers, flashcards...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <ul class="search-suggestions"></ul>
+                <div class="popular-searches">
+                    <h3>Popular Searches:</h3>
+                    <div class="search-tags">
+                        <a href="#" class="tag">Data Structures</a>
+                        <a href="#" class="tag">Object-Oriented Programming</a>
+                        <a href="#" class="tag">Machine Learning</a>
+                        <a href="#" class="tag">Web Development</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="wave-separator"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.net.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
