@@ -67,15 +67,15 @@ nav {
     transition: all 0.3s ease;
 }
 
-.logo:hover {
-    transform: scale(1.03);
-}
-
 .light-mode .logo {
     background: linear-gradient(45deg, var(--accent-light), var(--text-light));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.logo:hover {
+    transform: scale(1.03);
 }
 
 .nav-links {
@@ -107,12 +107,12 @@ nav {
     background-color: var(--accent-light);
 }
 
-.light-mode .nav-item:hover {
-    color: var(--accent-light);
-}
-
 .nav-item:hover {
     color: var(--accent-dark);
+}
+
+.light-mode .nav-item:hover {
+    color: var(--accent-light);
 }
 
 .nav-item:hover::after {
@@ -165,18 +165,7 @@ nav {
     transform: scale(1.1);
 }
 
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 2rem;
-    position: relative;
-    z-index: 1;
-}
-
+/* Styling for the Hamburger Menu.  */
 .hamburger {
     display: none;
     background: none;
@@ -206,7 +195,7 @@ nav {
     right: -100%;
     width: 80%;
     max-width: 400px;
-    height: 100vh;
+    height: 90vh;
     background-color: var(--bg-dark);
     transition: right 0.3s ease-in-out;
     z-index: 1001;
@@ -288,6 +277,7 @@ nav {
     margin-bottom: 1rem;
     padding: 0.8rem;
     border-radius: 5px;
+    cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -326,6 +316,19 @@ nav {
 .light-mode #mobile-theme-toggle:hover {
     background-color: var(--text-light);
     color: var(--bg-light);
+}
+
+/* Styling for Hero Section. */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 /* Adjust 3D background positioning */
@@ -481,6 +484,7 @@ nav {
 }
 
 
+/* Responsive Styling */
 @media screen and (max-width: 1024px) {
     .hero-title {
         font-size: 3rem;
@@ -526,5 +530,9 @@ nav {
 
     .hero-subtitle {
         font-size: 0.9rem;
+    }
+
+    .search-container {
+        max-width: 100%;
     }
 }
