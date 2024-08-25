@@ -1,3 +1,76 @@
+// Add this to your existing JavaScript
+
+const hamburger = document.querySelector('.hamburger');
+const mobileNav = document.querySelector('.mobile-nav');
+const closeBtn = document.querySelector('.close-btn');
+const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+
+hamburger.addEventListener('click', () => {
+    mobileNav.classList.add('active');
+    document.body.style.overflow = 'hidden';
+});
+
+closeBtn.addEventListener('click', () => {
+    mobileNav.classList.remove('active');
+    document.body.style.overflow = '';
+});
+
+mobileThemeToggle.addEventListener('click', () => {
+    if (body.classList.contains('dark-mode')) {
+        setTheme('light');
+    } else {
+        setTheme('dark');
+    }
+});
+
+// Update the existing setTheme function
+function setTheme(theme) {
+    if (theme === 'light') {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        mobileThemeToggle.querySelector('i').classList.remove('fa-sun');
+        mobileThemeToggle.querySelector('i').classList.add('fa-moon');
+        localStorage.setItem('theme', 'light');
+    } else {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        mobileThemeToggle.querySelector('i').classList.remove('fa-moon');
+        mobileThemeToggle.querySelector('i').classList.add('fa-sun');
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
+// Close mobile nav when clicking outside
+document.addEventListener('click', (e) => {
+    if (mobileNav.classList.contains('active') && !mobileNav.contains(e.target) && e.target !== hamburger) {
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+// Prevent closing when clicking inside mobile nav
+mobileNav.addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+// Add this function to handle responsive behavior
+function handleResponsive() {
+    if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Call this function on window resize
+window.addEventListener('resize', handleResponsive);
+
+// Also call it once on page load to ensure correct initial state
+handleResponsive();
+
 // 3D Background
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -86,20 +159,20 @@ searchInput.addEventListener('keypress', (e) => {
 function createShape(type) {
     const shape = document.createElement('div');
     shape.classList.add('shape');
-    
+
     let shapeStyle = '';
     if (type === 'triangle') {
         shapeStyle = 'width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-bottom: 87px solid rgba(255,255,255,0.1);';
     } else if (type === 'pentagon') {
         shapeStyle = 'width: 54px; height: 52px; background: rgba(255,255,255,0.1); clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);';
     }
-    
+
     shape.style.cssText = shapeStyle;
     shape.style.left = Math.random() * window.innerWidth + 'px';
     shape.style.top = Math.random() * window.innerHeight + 'px';
-    
+
     document.body.appendChild(shape);
-    
+
     animateShape(shape);
 }
 
@@ -107,7 +180,7 @@ function animateShape(shape) {
     const duration = 15000 + Math.random() * 10000;
     const xMove = Math.random() * 100 - 50;
     const yMove = Math.random() * 100 - 50;
-    
+
     shape.animate([
         { transform: 'translate(0, 0) rotate(0deg)' },
         { transform: `translate(${xMove}px, ${yMove}px) rotate(360deg)` }
