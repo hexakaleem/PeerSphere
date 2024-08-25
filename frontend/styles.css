@@ -43,7 +43,6 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
-    backdrop-filter: blur(10px);
 }
 
 nav {
@@ -61,6 +60,10 @@ nav {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: all 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.03);
 }
 
 .light-mode .logo {
@@ -81,14 +84,35 @@ nav {
     color: inherit;
     font-weight: 500;
     transition: color 0.3s;
+    position: relative;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    background-color: var(--accent-dark);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.light-mode .nav-item::after {
+    background-color: var(--accent-light);
+}
+
+.light-mode .nav-item:hover {
+    color: var(--accent-light);
 }
 
 .nav-item:hover {
     color: var(--accent-dark);
 }
 
-.light-mode .nav-item:hover {
-    color: var(--accent-light);
+.nav-item:hover::after {
+    width: 100%;
+    left: 0;
 }
 
 .nav-buttons button {
@@ -120,11 +144,19 @@ nav {
     color: var(--bg-light);
 }
 
+.login-btn:hover, .signup-btn:hover {
+    transform: translate(0, -2px);
+}
+
 #theme-toggle {
     background: none;
     border: none;
     color: inherit;
-    font-size: 1.2rem;
+    font-size: 1rem;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.1);
 }
 
 .hero {
@@ -135,6 +167,17 @@ nav {
     align-items: center;
     text-align: center;
     padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Adjust 3D background positioning */
+#background {
+    opacity: 0.3;
+}
+
+.light-mode #background {
+    opacity: 0.7;
 }
 
 .hero-title {
@@ -144,10 +187,29 @@ nav {
     animation: fadeInUp 1s ease-out;
 }
 
+.hero-title span {
+    background: linear-gradient(45deg, var(--accent-dark), var(--text-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.light-mode .hero-title span {
+    background: linear-gradient(45deg, var(--accent-light), var(--text-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .hero-subtitle {
     font-size: 1.2rem;
     margin-bottom: 2rem;
     animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.light-mode .hero-title,
+.light-mode .hero-subtitle {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .search-container {
@@ -168,6 +230,10 @@ nav {
     color: inherit;
 }
 
+.search-input:focus {
+    outline: none;
+}
+
 .search-btn {
     padding: 1rem 1.5rem;
     border: none;
@@ -176,6 +242,14 @@ nav {
     color: var(--bg-dark);
     cursor: pointer;
     transition: all 0.3s;
+}
+
+.light-mode .search-input {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .popular-searches a {
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .light-mode .search-btn {
@@ -189,6 +263,7 @@ nav {
 
 .popular-searches h3 {
     margin-bottom: 1rem;
+    letter-spacing: 1px;
 }
 
 .popular-searches ul {
@@ -221,6 +296,15 @@ nav {
     color: var(--bg-light);
 }
 
+/* Background shapes */
+.shape {
+    position: fixed;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: -1;
+}
+
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -229,32 +313,5 @@ nav {
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
-
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-
-    .search-container {
-        flex-direction: column;
-    }
-
-    .search-input, .search-btn {
-        border-radius: 50px;
-        width: 100%;
-    }
-
-    .search-btn {
-        margin-top: 1rem;
     }
 }

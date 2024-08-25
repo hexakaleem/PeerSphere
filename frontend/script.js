@@ -81,3 +81,46 @@ searchInput.addEventListener('keypress', (e) => {
         searchBtn.click();
     }
 });
+
+// Animated background shapes
+function createShape(type) {
+    const shape = document.createElement('div');
+    shape.classList.add('shape');
+    
+    let shapeStyle = '';
+    if (type === 'triangle') {
+        shapeStyle = 'width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-bottom: 87px solid rgba(255,255,255,0.1);';
+    } else if (type === 'pentagon') {
+        shapeStyle = 'width: 54px; height: 52px; background: rgba(255,255,255,0.1); clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);';
+    }
+    
+    shape.style.cssText = shapeStyle;
+    shape.style.left = Math.random() * window.innerWidth + 'px';
+    shape.style.top = Math.random() * window.innerHeight + 'px';
+    
+    document.body.appendChild(shape);
+    
+    animateShape(shape);
+}
+
+function animateShape(shape) {
+    const duration = 15000 + Math.random() * 10000;
+    const xMove = Math.random() * 100 - 50;
+    const yMove = Math.random() * 100 - 50;
+    
+    shape.animate([
+        { transform: 'translate(0, 0) rotate(0deg)' },
+        { transform: `translate(${xMove}px, ${yMove}px) rotate(360deg)` }
+    ], {
+        duration: duration,
+        iterations: Infinity,
+        direction: 'alternate',
+        easing: 'ease-in-out'
+    });
+}
+
+// Create multiple shapes
+for (let i = 0; i < 5; i++) {
+    createShape('triangle');
+    createShape('pentagon');
+}
