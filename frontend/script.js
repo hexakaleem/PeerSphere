@@ -191,7 +191,6 @@ for (let i = 0; i < 5; i++) {
 
 
 // *JS For Featured Resources Section.
-// Assume this data comes from your database
 const frFeaturedResources = [
     {
         title: "Introduction to Algorithms",

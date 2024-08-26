@@ -1,5 +1,5 @@
 .fr-section {
-    padding: 4rem 2rem;
+    padding: 6rem 2rem;
 }
 
 .fr-section-title {
@@ -121,6 +121,7 @@
     border-radius: 5px;
     transition: all 0.3s ease;
     text-align: center;
+    z-index: 1;
 }
 
 .light-mode .fr-resource-link {
