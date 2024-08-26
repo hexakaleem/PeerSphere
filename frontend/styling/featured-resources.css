@@ -154,3 +154,10 @@
 .fr-resource-card:hover::before {
     transform: rotate(45deg) translate(50%, 50%);
 }
+
+@media screen and (max-width: 768px) {
+    .fr-resource-type {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+    }
+}
