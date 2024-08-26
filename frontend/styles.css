@@ -88,6 +88,11 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
+    background-color: var(--bg-dark);
+}
+
+.light-mode header {
+    background-color: var(--bg-light);
 }
 
 nav {
@@ -512,6 +517,44 @@ nav {
 .light-mode .shape {
     opacity: 0.4;
     filter: invert(1);
+}
+
+/* Scroll Prompt */
+.scroll-prompt {
+    position: absolute;
+    bottom: 2rem;
+    left: 45;
+    right: 45;
+    transform: translateX(-50%);
+    text-align: center;
+    cursor: pointer;
+    animation: fadeInUp 1s ease-out 2s both;
+}
+
+.light-mode .scroll-prompt p {
+    color: var(--text-light);
+}
+
+.scroll-arrow {
+    font-size: 2rem;
+    color: var(--accent-dark);
+    animation: bounce 2s infinite;
+}
+
+.light-mode .scroll-arrow {
+    color: var(--accent-light);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
 }
 
 

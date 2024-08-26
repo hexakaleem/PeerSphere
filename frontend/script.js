@@ -188,3 +188,98 @@ for (let i = 0; i < 5; i++) {
     createShape('triangle');
     createShape('pentagon');
 }
+
+
+// *JS For Featured Resources Section.
+// Assume this data comes from your database
+const frFeaturedResources = [
+    {
+        title: "Introduction to Algorithms",
+        description: "Comprehensive notes on fundamental algorithms and data structures.",
+        author: "John Doe",
+        rating: 4.8,
+        type: "Notes",
+        icon: "fa-book"
+    },
+    {
+        title: "Advanced JavaScript",
+        description: "In-depth guide to modern JavaScript features and best practices.",
+        author: "Jane Smith",
+        rating: 4.9,
+        type: "Cheat Sheet",
+        icon: "fa-code"
+    },
+    {
+        title: "Database Management Systems",
+        description: "Comprehensive study material for DBMS concepts and SQL.",
+        author: "Alex Johnson",
+        rating: 4.7,
+        type: "Past Paper",
+        icon: "fa-database"
+    },
+    {
+        title: "Machine Learning Basics",
+        description: "Introductory notes on machine learning algorithms and concepts.",
+        author: "Emily Brown",
+        rating: 4.6,
+        type: "Flashcards",
+        icon: "fa-robot"
+    },
+    {
+        title: "Web Development Fundamentals",
+        description: "Essential guide to HTML, CSS, and JavaScript for beginners.",
+        author: "Michael Lee",
+        rating: 4.8,
+        type: "Notes",
+        icon: "fa-laptop-code"
+    },
+    {
+        title: "Data Structures Practice",
+        description: "Collection of practice problems for common data structures.",
+        author: "Sarah Wilson",
+        rating: 4.9,
+        type: "Past Paper",
+        icon: "fa-sitemap"
+    }
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+    const resourcesContainer = document.querySelector('.fr-resources-container');
+
+    frFeaturedResources.forEach(resource => {
+        const resourceCard = document.createElement('div');
+        resourceCard.classList.add('fr-resource-card');
+        resourceCard.innerHTML = `
+            <div class="fr-resource-type">${resource.type}</div>
+            <div class="fr-resource-icon"><i class="fas ${resource.icon}"></i></div>
+            <h3>${resource.title}</h3>
+            <p>${resource.description}</p>
+            <div class="fr-resource-meta">
+                <span><i class="fas fa-user"></i> ${resource.author}</span>
+                <span><i class="fas fa-star"></i> ${resource.rating}</span>
+            </div>
+            <a href="#" class="fr-resource-link">View Resource</a>
+        `;
+        resourcesContainer.appendChild(resourceCard);
+    });
+
+    const resourceCards = document.querySelectorAll('.fr-resource-card');
+
+    resourceCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px) scale(1.05)';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+
+    // Scroll prompt functionality
+    const scrollPrompt = document.querySelector('.scroll-prompt');
+    const featuredResourcesSection = document.querySelector('.fr-section');
+
+    scrollPrompt.addEventListener('click', () => {
+        featuredResourcesSection.scrollIntoView({ behavior: 'smooth' });
+    });
+});
