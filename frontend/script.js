@@ -7,6 +7,16 @@ const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 const icon = themeToggle.querySelector('i');
 const mobileIcon = mobileThemeToggle.querySelector('i');
+const navItem = document.querySelectorAll('.nav-item');
+let defaultActive = document.querySelector('.active');
+
+for (let i = 0; i < navItem.length; i++) {
+    navItem[i].addEventListener('click', () => {
+        defaultActive.classList.remove('active');
+        navItem[i].classList.add('active');
+        defaultActive = navItem[i];
+    });
+}
 
 hamburger.addEventListener('click', () => {
     mobileNav.classList.add('active');

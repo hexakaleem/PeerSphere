@@ -16,12 +16,52 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
     transition: background-color 0.3s, color 0.3s;
 }
+
+/* Top Button Styling.  */
+#top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--accent-dark);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.light-mode #top {
+    background-color: var(--accent-light);
+    color: var(--bg-light);
+}
+
+#top i {
+    font-size: 2.3rem;
+}
+
+#top:hover {
+    transform: translateY(-2px);
+}
+
+.light-mode #top:hover {
+    transform: translateY(-2px);
+}
+
 
 body.dark-mode {
     background-color: var(--bg-dark);
@@ -92,15 +132,19 @@ nav {
     position: relative;
 }
 
-.nav-item::after {
-    content: '';
+.nav-item.active::after {
+    content: "";
     position: absolute;
-    width: 0;
-    height: 2px;
     bottom: -5px;
-    left: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
     background-color: var(--accent-dark);
-    transition: width 0.3s ease, left 0.3s ease;
+    transition: width 0.3s;
+}
+
+.light-mode .nav-item.active::after {
+    background-color: var(--accent-light);
 }
 
 .light-mode .nav-item::after {
