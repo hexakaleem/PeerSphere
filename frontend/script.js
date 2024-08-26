@@ -282,3 +282,98 @@ document.addEventListener('DOMContentLoaded', () => {
         featuredResourcesSection.scrollIntoView({ behavior: 'smooth' });
     });
 });
+
+
+
+
+// *Subjects Overview JS
+const subjects = [
+    {
+        title: "Data Structures & Algorithms",
+        shortTitle: "DSA",
+        icon: "fa-sitemap",
+        description: "Master the fundamentals of efficient data organization and problem-solving techniques."
+    },
+    {
+        title: "Object Oriented Programming",
+        shortTitle: "OOP",
+        icon: "fa-cubes",
+        description: "Learn to design and implement software using object-oriented principles and patterns."
+    },
+    {
+        title: "Discrete Structures",
+        shortTitle: "DS",
+        icon: "fa-project-diagram",
+        description: "Explore mathematical structures for representing discrete objects and relationships."
+    },
+    {
+        title: "Databases",
+        shortTitle: "DB",
+        icon: "fa-database",
+        description: "Understand the principles of storing, retrieving, and managing data efficiently."
+    },
+    {
+        title: "Software Engineering Concepts",
+        shortTitle: "SEC",
+        icon: "fa-cogs",
+        description: "Study methodologies and practices for developing large-scale software systems."
+    },
+    {
+        title: "Computer Networks",
+        shortTitle: "CN",
+        icon: "fa-network-wired",
+        description: "Dive into the principles and protocols that enable communication between computers."
+    }
+];
+
+function populateSubjectsOverview() {
+    const subjectsGrid = document.querySelector('.subjects-grid');
+
+    subjects.forEach(subject => {
+        const subjectCard = document.createElement('div');
+        subjectCard.classList.add('subject-card');
+        subjectCard.innerHTML = `
+            <div class="subject-icon"><i class="fas ${subject.icon}"></i></div>
+            <h3>${subject.title}</h3>
+            <span class="subject-short-title">${subject.shortTitle}</span>
+            <p>${subject.description}</p>
+        `;
+        subjectsGrid.appendChild(subjectCard);
+    });
+
+    // Add floating particles
+    const subjectsOverview = document.querySelector('.subjects-overview');
+    for (let i = 0; i < 20; i++) {
+        createParticle(subjectsOverview);
+    }
+}
+
+function createParticle(container) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.top = Math.random() * 100 + '%';
+    container.appendChild(particle);
+
+    animateParticle(particle);
+}
+
+function animateParticle(particle) {
+    const duration = 15000 + Math.random() * 10000;
+    const xMove = Math.random() * 100 - 50;
+    const yMove = Math.random() * 100 - 50;
+
+    particle.animate([
+        { transform: 'translate(0, 0)' },
+        { transform: `translate(${xMove}px, ${yMove}px)` }
+    ], {
+        duration: duration,
+        iterations: Infinity,
+        direction: 'alternate',
+        easing: 'ease-in-out'
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    populateSubjectsOverview();
+});
