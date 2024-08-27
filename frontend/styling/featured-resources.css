@@ -2,7 +2,7 @@
     padding: 6rem 2rem;
 }
 
-.fr-section-title {
+.section-title {
     font-family: 'Montserrat', sans-serif;
     font-size: 2.5rem;
     text-align: center;
@@ -12,7 +12,7 @@
     letter-spacing: 2px;
 }
 
-.light-mode .fr-section-title {
+.light-mode .section-title {
     color: var(--accent-light);
 }
 
