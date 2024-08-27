@@ -5,11 +5,13 @@
     position: relative;
     overflow: hidden;
     font-family: 'Arial', sans-serif;
+    border-top: 3px solid var(--accent-dark);
 }
 
 .light-mode .site-footer {
     background: linear-gradient(135deg, var(--bg-light) 0%, #e6f2ff 100%);
     color: var(--text-light);
+    border-top: 3px solid var(--accent-light);
 }
 
 .footer-content {
@@ -178,6 +180,14 @@
     border-top-color: rgba(0, 0, 0, 0.1);
 }
 
+.footer-bottom p {
+    color: var(--accent-dark);
+}
+
+.light-mode .footer-bottom p {
+    color: var(--accent-light);
+}
+
 .feedback-message {
     position: fixed;
     top: 20px;
@@ -216,6 +226,6 @@
 @media screen and (max-width: 768px) {
     .footer-content {
         flex-direction: column;
-        gap: 0;
+        gap: 1rem;
     }
 }
