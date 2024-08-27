@@ -377,3 +377,173 @@ function animateParticle(particle) {
 document.addEventListener('DOMContentLoaded', () => {
     populateSubjectsOverview();
 });
+
+
+
+
+// *Top Contributors Data
+const topContributors = [
+    {
+        rank: 1,
+        name: "Sarah Johnson",
+        username: "@sarahcodes",
+        avatar: "https://randomuser.me/api/portraits/women/65.jpg",
+        contributions: 127,
+        likes: 1840,
+        rating: 4.9,
+        badges: ["🏆", "⭐", "📚"]
+    },
+    {
+        rank: 2,
+        name: "Michael Chen",
+        username: "@mikedev",
+        avatar: "https://randomuser.me/api/portraits/men/22.jpg",
+        contributions: 115,
+        likes: 1620,
+        rating: 4.8,
+        badges: ["🥈", "💡", "🔧"]
+    },
+    {
+        rank: 3,
+        name: "Emily Rodriguez",
+        username: "@emilytech",
+        avatar: "https://randomuser.me/api/portraits/women/89.jpg",
+        contributions: 98,
+        likes: 1450,
+        rating: 4.7,
+        badges: ["🥉", "🚀", "💻"]
+    },
+    {
+        rank: 4,
+        name: "Alex Thompson",
+        username: "@alexcodes",
+        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+        contributions: 89,
+        likes: 1320,
+        rating: 4.6,
+        badges: ["🌟", "💻", "🔍"]
+    },
+    {
+        rank: 5,
+        name: "Sophia Lee",
+        username: "@sophiadev",
+        avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+        contributions: 76,
+        likes: 1150,
+        rating: 4.5,
+        badges: ["🚀", "📚", "🎨"]
+    },
+    {
+        rank: 6,
+        name: "David Garcia",
+        username: "@daveprog",
+        avatar: "https://randomuser.me/api/portraits/men/56.jpg",
+        contributions: 68,
+        likes: 980,
+        rating: 4.4,
+        badges: ["💡", "🔧", "🌐"]
+    },
+    {
+        rank: 7,
+        name: "Emma Wilson",
+        username: "@emmatech",
+        avatar: "https://randomuser.me/api/portraits/women/17.jpg",
+        contributions: 61,
+        likes: 890,
+        rating: 4.3,
+        badges: ["📱", "🎯", "🔬"]
+    },
+    {
+        rank: 8,
+        name: "Ryan Patel",
+        username: "@ryandev",
+        avatar: "https://randomuser.me/api/portraits/men/72.jpg",
+        contributions: 55,
+        likes: 820,
+        rating: 4.2,
+        badges: ["🖥️", "🏆", "🔑"]
+    },
+    {
+        rank: 9,
+        name: "Olivia Brown",
+        username: "@oliviacoder",
+        avatar: "https://randomuser.me/api/portraits/women/90.jpg",
+        contributions: 49,
+        likes: 750,
+        rating: 4.1,
+        badges: ["📊", "🎓", "🌈"]
+    }
+];
+
+function populateTopContributors() {
+    const leaderboard = document.querySelector('.contributors-leaderboard');
+
+    topContributors.forEach(contributor => {
+        const contributorCard = document.createElement('div');
+        contributorCard.classList.add('contributor-card');
+        contributorCard.innerHTML = `
+            <span class="contributor-rank">#${contributor.rank}</span>
+            <img src="${contributor.avatar}" alt="${contributor.name}" class="contributor-avatar">
+            <h3 class="contributor-name">${contributor.name}</h3>
+            <p class="contributor-username">${contributor.username}</p>
+            <div class="contributor-stats">
+                <div class="stat">
+                    <div class="stat-value">${contributor.contributions}</div>
+                    <div class="stat-label">Contributions</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">${contributor.likes}</div>
+                    <div class="stat-label">Likes</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">${contributor.rating}</div>
+                    <div class="stat-label">Rating</div>
+                </div>
+            </div>
+            <div class="contributor-badges">
+                ${contributor.badges.map(badge => `<span class="badge">${badge}</span>`).join('')}
+            </div>
+            <div class="contributor-actions">
+                <button class="action-btn view-profile-btn">View Profile</button>
+                <button class="action-btn follow-btn">Follow</button>
+            </div>
+        `;
+        leaderboard.appendChild(contributorCard);
+    });
+}
+
+function initializeCarousel() {
+    const carousel = document.querySelector('.contributors-leaderboard');
+    const leftArrow = document.getElementById('leftArrow');
+    const rightArrow = document.getElementById('rightArrow');
+    const cardWidth = 350 + 32; // card width + gap
+    // If screen size is greater than 768px, the visible cards are3 and if it's less than 768 they are two and 1 for less than 480px.
+    const visibleCards = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 1 : 0;
+
+    let currentIndex = 0;
+
+    function updateArrows() {
+        leftArrow.style.display = currentIndex > 0 ? 'flex' : 'none';
+        rightArrow.style.display = currentIndex < topContributors.length - visibleCards ? 'flex' : 'none';
+    }
+
+    function scrollCarousel(direction) {
+        if (direction === 'left' && currentIndex > 0) {
+            currentIndex--;
+        } else if (direction === 'right' && currentIndex < topContributors.length - visibleCards) {
+            currentIndex++;
+        }
+        carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        updateArrows();
+    }
+
+    leftArrow.addEventListener('click', () => scrollCarousel('left'));
+    rightArrow.addEventListener('click', () => scrollCarousel('right'));
+
+    updateArrows();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    populateTopContributors();
+    initializeCarousel();
+});

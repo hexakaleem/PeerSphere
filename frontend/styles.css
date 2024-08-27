@@ -431,11 +431,23 @@ nav {
     -webkit-text-fill-color: transparent;
 }
 
+.hero-title span::selection {
+    background: var(--accent-dark);
+    color: var(--bg-dark);
+    -webkit-text-fill-color: var(--bg-dark);
+}
+
 .light-mode .hero-title span {
     background: linear-gradient(45deg, var(--accent-light), var(--text-light));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.light-mode .hero-title span::selection {
+    background: var(--accent-light);
+    color: var(--bg-light);
+    -webkit-text-fill-color: var(--bg-light);
 }
 
 .hero-subtitle {
