@@ -12,7 +12,7 @@
     <link rel="icon" href="./assets/favIcon.svg">
 
     <!-- CSS Styling Files -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./styling/footer.css">
     <link rel="stylesheet" href="./styling/about.css">
 </head>
@@ -116,41 +116,50 @@
                 <button class="cta-button">Sign Up Now</button>
             </div>
         </section>
-    </main>
 
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-section about">
-                <h3 class="footer-title">About PeerSphere</h3>
-                <p>PeerSphere is a dynamic, student-centric platform revolutionizing the way learners collaborate and share knowledge. It serves as a virtual hub where students from diverse backgrounds can upload, discover, and exchange a wide array of academic resources.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+
+
+        <!-- *Footer Section  -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h3 class="footer-title">About PeerSphere</h3>
+                    <p>PeerSphere is a dynamic, student-centric platform revolutionizing the way learners collaborate
+                        and share knowledge. It serves as a virtual hub where students from diverse backgrounds can
+                        upload, discover, and exchange a wide array of academic resources.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section feedback">
+                    <h3 class="footer-title">Suggestions & Feedback</h3>
+                    <form id="feedback-form">
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit" class="submit-btn">Send</button>
+                    </form>
                 </div>
             </div>
-            <div class="footer-section feedback">
-                <h3 class="footer-title">Suggestions & Feedback</h3>
-                <form id="feedback-form">
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your Message" required></textarea>
-                    <button type="submit" class="submit-btn">Send</button>
-                </form>
+            <div class="footer-bottom">
+                <p>&copy;2024 PeerSphere. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <!-- Feedback Submission Message -->
+        <div id="feedback-message" class="feedback-message">
+            <div class="feedback-message-content">
+                <i class="fas fa-check-circle"></i>
+                <p>Thank you for your feedback!</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy;2024 PeerSphere. All rights reserved.</p>
-        </div>
-    </footer>
 
-    <div id="feedback-message" class="feedback-message">
-        <div class="feedback-message-content">
-            <i class="fas fa-check-circle"></i>
-            <p>Thank you for your feedback!</p>
-        </div>
-    </div>
+    </main>
 
+
+    <!-- For Hamburger Menu. -->
     <div class="mobile-nav">
         <div class="mobile-nav-header">
             <div class="logo">PeerSphere</div>
@@ -173,8 +182,10 @@
         </div>
     </div>
 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="./script.js"></script>
+    <script src="./footer.js"></script>
 </body>
 
 </html>
